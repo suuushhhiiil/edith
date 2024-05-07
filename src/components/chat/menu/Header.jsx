@@ -10,14 +10,16 @@ import InfoDrawer from "../../drawer/InfoDrawer";
 
 const Header=()=>{
     const {account}= useContext(AccountContext);
+    
     const [openDrawer, setOpenDrawer]=useState(false);
+
     const toggleDrawer = () =>{
         setOpenDrawer(true);
     }
     return (
         <>
         <Box className={`${styles.Component}`}>
-            <Box
+            <img
             className={`${styles.Image}`}
             onClick={()=> toggleDrawer()}
             />
@@ -33,6 +35,4 @@ const Header=()=>{
         </>
     )
 }
-
-
 export default Header;
