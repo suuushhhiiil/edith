@@ -1,0 +1,15 @@
+@import "../../constants/variable.module.scss";
+
+.Container{
+    display: flex;
+}
+
+.LeftBox {
+    min-width:380px;
+    width:25%;
+}
+.RightBox {
+    width:73%;
+    min-width:300px;
+    border-left: 1px solid #f2f2f2;
+}

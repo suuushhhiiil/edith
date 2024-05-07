@@ -1,52 +1,35 @@
 import { Box, styled } from "@mui/material";
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AccountContext } from "../../../context/AccountProvider";
-import { Chat as MessageIcon, MoreVert } from "@mui/icons-material";
-
+import { Chat as MessageIcon } from "@mui/icons-material";
 import HeaderMenu from "./HeaderMenu";
+import styles from "./Header.module.scss";
+import InfoDrawer from "../../drawer/InfoDrawer";
 
-const Component = styled(Box)`
-    height:44px;
-    background-color:#ede0d4;
-    padding: 8px 16px;
-    display:flex;
-    align-items:center;
-    border:1px solid #f2f2f2;
-`;
-const Wrapper= styled(Box)`
-    margin-left:auto;
-    &> * {
-        margin-left:2px;
-        padding:8px;
-    };
-    &: first-child {
-        font-size:22px;
-        margin-right: 8px;
-        margin-top: 4px;
-    }
-`;
-const Image=styled('img')({
-    height:40,
-    width:40,
-    borderRadius:"50%"
-});
-const ImageBox=styled(Box)`
-    height:40;
-    width:40;
-    borderRadius:"50%";
-`;
+
 const Header=()=>{
     const {account}= useContext(AccountContext);
+    const [openDrawer, setOpenDrawer]=useState(false);
+    const toggleDrawer = () =>{
+        setOpenDrawer(true);
+    }
     return (
         <>
-        <Component>
-            <ImageBox/>
-            <Wrapper>
+        <Box className={`${styles.Component}`}>
+            <Box
+            className={`${styles.Image}`}
+            onClick={()=> toggleDrawer()}
+            />
+            <Box
+            className={`${styles.ImageBox}`}/>
+            <Box 
+            className={`${styles.Wrapper}`}>
                 <MessageIcon/>
                 <HeaderMenu/>
-            </Wrapper>    
-        </Component>
+            </Box>    
+        </Box>
+        <InfoDrawer open={openDrawer} setOpen={setOpenDrawer}/>
         </>
     )
 }
