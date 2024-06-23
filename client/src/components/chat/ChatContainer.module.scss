@@ -1,0 +1,17 @@
+@import "../../constants/variable.module.scss";
+
+.Container{
+    display: flex;
+}
+
+.LeftBox {
+    min-width:350px;
+    width:25vw;
+}
+.RightBox {
+    width: 75vw;
+    min-width:300px;
+    border-left: 1px solid $borderColor;
+    padding: 3px;
+    height:99vh;
+}

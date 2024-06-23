@@ -1,0 +1,29 @@
+@import "../../../constants/variable.module.scss";
+
+
+
+.Component{
+    height:44px;
+    background-color:$primaryColor;
+    padding: 8px 16px;
+    display:flex;
+    align-items:center;
+    border:1px solid $borderColor;
+}
+.Wrapper{
+    color: $white;
+    margin-left:auto;
+    &> * {
+        margin-left:2px;
+        padding:8px;
+    };
+    &> first-child {
+        font-size:22px;
+        margin-right: 8px;
+        margin-top: 4px;
+    }}
+.Image{
+    height:40px;
+    width:40px;
+    border-radius:50%;
+}

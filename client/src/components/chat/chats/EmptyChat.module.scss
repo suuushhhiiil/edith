@@ -1,0 +1,13 @@
+@import "../../../constants/variable.module.scss";
+
+.Container{
+    text-wrap: wrap;
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: $accentColor;
+    height: 98%;
+    color: $secondaryColor;
+}
