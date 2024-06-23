@@ -15,5 +15,8 @@
     "url": "https://github.com/suuushhhiiil/edith/issues"
   },
   "homepage": "https://github.com/suuushhhiiil/edith#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
