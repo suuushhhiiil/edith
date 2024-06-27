@@ -1,5 +1,5 @@
 import { Dialog, Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useContext } from "react";
@@ -11,9 +11,18 @@ import { addUser } from "../../service/api";
 const LogInDialog = () => {
   const { setAccount } = useContext(AccountContext);
 
+  //to keep user logged in
+  useEffect(() => {
+    const storedAccount = localStorage.getItem("account");
+    if(storedAccount){
+      setAccount(JSON.parse(storedAccount));
+    }
+  },[setAccount]);
+
   const logInSuccess = async (res) => {
     const decoded = jwtDecode(res.credential);
     setAccount(decoded);
+    localStorage.setItem("account", JSON.stringify(decoded)); //to keep user logged in
     await addUser(decoded);
   };
   const logInError = (res) => {
