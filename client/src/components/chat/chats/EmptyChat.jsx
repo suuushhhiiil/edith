@@ -1,16 +1,14 @@
-
-import { Box } from "@mui/material";
 import React from "react";
 import styles from "./EmptyChat.module.scss";
 const EmptyChat =()=>{
     return(
-        <Box
+        <div
         className={`${styles.Container}`}
         >
-            <Box>
+            <div>
                 Select a chat to continue!
-            </Box>
-        </Box>
+            </div>
+        </div>
     )
 }
 

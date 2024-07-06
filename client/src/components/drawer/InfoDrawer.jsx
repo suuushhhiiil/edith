@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer, Box, Typography, } from "@mui/material";
+import { Drawer, Typography, } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import styles from "./InfoDrawer.module.scss";
 import Profile from "./Profile";
@@ -24,7 +24,7 @@ const InfoDrawer = ({ open, setOpen }) => {
                 onClose={() => handleClose()}
                 PaperProps={{ sx: drawerStyle }}
             >
-                <Box
+                <div
                     className={`${styles.Header}`}
                 >
                     <ArrowBack 
@@ -36,12 +36,12 @@ const InfoDrawer = ({ open, setOpen }) => {
                     >
                         Profile
                     </Typography>
-                </Box>
-                <Box 
+                </div>
+                <div 
                     className={`${styles.Container}`}
                 >
                     <Profile/>
-                </Box>
+                </div>
             </Drawer>
         </>
     );

@@ -1,23 +1,22 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { InputBase } from "@mui/material";
 import styles from "./Search.module.scss";
 
 const Search = () => {
     return (
-        <Box className={`${styles.Component}`}>
-            <Box className={`${styles.Wrapper}`}>
-                <Box className={`${styles.Icon}`}>
+        <div className={`${styles.Component}`}>
+            <div className={`${styles.Wrapper}`}>
+                <div className={`${styles.Icon}`}>
                     <SearchIcon fontSize="small" />
-                </Box>
+                </div>
                 <InputBase
                     className={`${styles.InputField}`}
                     placeholder="Search or start a new chat "
                     fullWidth
                 />
-            </Box>
-        </Box>
+            </div>
+        </div>
     );
 };
 export default Search;

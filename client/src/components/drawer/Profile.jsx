@@ -1,5 +1,5 @@
 import React, { useContext } from "react"; 
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import styles from "./Profile.module.scss";
 import  "./Profile.module.scss";
 import { AccountContext } from "../../context/AccountProvider";
@@ -9,15 +9,15 @@ const Profile = () => {
     const {account} = useContext(AccountContext)
     return (
         <>
-            <Box className={`${styles.Picture}`}>
+            <div className={`${styles.PictureBox}`}>
                     <img 
                     className={`${styles.Picture}`}
                     src={account.picture}
                     alt="user profile"
                     />
                     
-            </Box>
-            <Box
+            </div>
+            <div
             className={`${styles.Wrapper}`}>
                 <Typography
                     className={`${styles.Label}`}
@@ -29,13 +29,13 @@ const Profile = () => {
                 >
                     {account.name}
                 </Typography>
-            </Box>
+            </div>
                 <Typography
                     className={`${styles.Description}`}
                 >
                    Your name as displayed in your Google Account.
                 </Typography>
-            <Box
+            <div
              className={`${styles.Wrapper}`}>
                 <Typography
                     className={`${styles.Label}`}
@@ -47,13 +47,13 @@ const Profile = () => {
                 >
                     Always keep coding!
                 </Typography>
-            </Box>
-            <Box
+            </div>
+            <div
              className={`${styles.LogOut}`}>
                 <Typography>
                     Log Out
                 </Typography>
-                </Box>
+                </div>
         </>
     );
 };

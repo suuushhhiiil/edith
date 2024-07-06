@@ -1,4 +1,4 @@
-import { Dialog, Box, Typography } from "@mui/material";
+import { Dialog, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
@@ -12,12 +12,12 @@ const LogInDialog = () => {
   const { setAccount } = useContext(AccountContext);
 
   //to keep user logged in
-  useEffect(() => {
+useEffect(() => {
     const storedAccount = localStorage.getItem("account");
     if(storedAccount){
       setAccount(JSON.parse(storedAccount));
     }
-  },[setAccount]);
+   },[setAccount]);
 
   const logInSuccess = async (res) => {
     const decoded = jwtDecode(res.credential);
@@ -33,9 +33,9 @@ const LogInDialog = () => {
     open={true} 
     className={`${styles.Dialog}`}
     hideBackdrop={true}>
-      <Box 
+      <div 
       className={`${styles.dialogBoxOuter}`}>
-        <Box id="logIn" sx={{ padding: "20px" }}>
+        <div id="logIn" sx={{ padding: "20px" }}>
           <Typography
             textAlign={"center"}
             sx={{
@@ -44,16 +44,16 @@ const LogInDialog = () => {
           >
             Log in to Edith!
           </Typography>
-          <Box
+          <div
             sx={{
               display: "flex",
               justifyContent: "center",
             }}
           >
             <GoogleLogin onSuccess={logInSuccess} onError={logInError} />
-          </Box>
-        </Box>
-      </Box>
+          </div>
+        </div>
+      </div>
     </Dialog>
   );
 };

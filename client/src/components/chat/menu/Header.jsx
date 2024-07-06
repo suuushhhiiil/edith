@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React from "react";
 import { useContext, useState } from "react";
 import { AccountContext } from "../../../context/AccountProvider";
@@ -17,19 +16,19 @@ const Header=()=>{
     
     return (
         <>
-        <Box className={`${styles.Component}`}>
+        <div className={`${styles.Component}`}>
             <img 
             className={`${styles.Image}`}
             src={account.picture}
             alt="dp"
             onClick={()=>toggleDrawer()}
             />
-            <Box 
+            <div 
             className={`${styles.Wrapper}`}>
                 <MessageIcon/>
                 <HeaderMenu setOpenDrawer={setOpenDrawer}/>
-            </Box>    
-        </Box>
+            </div>    
+        </div>
         <InfoDrawer open={openDrawer} setOpen={setOpenDrawer}/>
         </>
     )

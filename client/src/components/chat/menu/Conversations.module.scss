@@ -1,0 +1,12 @@
+@import "../../../constants/variable.module.scss";
+
+.Container {
+    height: 88vh;
+    overflow: overlay;
+}
+
+.Divider{
+    margin: 0 20px 0 80px !important;
+    background-color: $accentColor;
+    opacity: 0.6;
+}

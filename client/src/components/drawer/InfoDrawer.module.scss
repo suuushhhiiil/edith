@@ -1,7 +1,7 @@
 @import "../../constants/variable.module.scss";
 
 .Header {
-    background-color: $primaryColor;
+    background-color: $green;
     height: 8%;
     display: flex;
     align-items: center;
@@ -16,6 +16,7 @@
 }
 
 .Container {
-    height: 92%;
+    height: 100%;
     background-color: $accentColor;
+    overflow-y:hidden;
 }

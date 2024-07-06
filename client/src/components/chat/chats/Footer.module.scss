@@ -1,0 +1,33 @@
+@import "../../../constants/variable.module.scss";
+
+.Footer{
+    display: flex;
+    align-items: center;
+    background-color: $accentColor;
+    height: 50px;
+    margin-top: auto;
+    padding: 8px 16px;
+}
+.Wrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    & > :last-child {
+        margin-left: auto;
+        margin-right: 30px;
+    }
+    & > svg {
+        padding: 0px 10px;
+    }
+}
+.Icon{
+    color: $label;
+    font-size: 25px !important;
+}
+
+.Input{
+    background-color: $white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    min-width: 350px !important;
+}

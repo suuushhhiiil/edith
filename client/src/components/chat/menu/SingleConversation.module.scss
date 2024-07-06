@@ -1,0 +1,18 @@
+@import "./../../../constants/variable.module.scss";
+
+.Container {
+    display: flex;
+    padding: 0px;
+    height: 70px;
+}
+
+.Image {
+    width: 50px;
+    border-radius: 50%;
+    margin: 15px 15px;
+}
+
+.Name {
+    font-size: 18px;
+    margin-top: 18px;
+}

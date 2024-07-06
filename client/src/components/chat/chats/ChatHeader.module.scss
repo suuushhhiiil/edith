@@ -1,0 +1,39 @@
+@import "../../../constants/variable.module.scss";
+
+.Header {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 8px 16px;
+    background-color: $primaryColor;
+}
+
+.Image {
+    background-color: $black;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.Info {
+    margin-left: 12px;
+}
+
+.Name {
+    color: $black;
+    font-size: 18px;
+}
+
+.Status {
+    color: $label;
+    font-size: 11px;
+}
+
+.Icons {
+    color: $label;
+    margin-left: auto;
+    & > svg {               //to handle CSS of Children components
+        padding: 8px;
+        font-size: 24px;
+    }
+}
