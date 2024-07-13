@@ -1,26 +1,29 @@
 import React from "react";
 import styles from "./ChatHeader.module.scss";
 import { Search, MoreVert } from "@mui/icons-material";
-import { defaultProfilePicture } from "../../../constants/data";
-
-const ChatHeader = () => {
+const ChatHeader = ({person}) => {
     return (
         <>
         <div 
         className={`${styles.Header}`}>
             <img 
             className={`${styles.Image}`}
-            src={defaultProfilePicture}
+            src={person.picture}
             alt="dp"
             />
             <div
             className={`${styles.Info}`}>
+            
             <div
             className={`${styles.Name}`}
-            >Name</div>
+            >
+                {person.name}
+            </div>
             <div
             className={`${styles.Status}`}
-            >Online Status</div>
+            >
+                Offline
+                </div>
             </div>
             <div className={`${styles.Icons}`}>
                 <Search/>

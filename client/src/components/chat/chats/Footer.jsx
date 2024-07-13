@@ -1,36 +1,78 @@
 import React from "react";
 import styles from "./Footer.module.scss";
+import { useEffect } from "react";
+import { uploadFile } from "../../../service/api";
 
 //Components import
 import AttachFile from '@mui/icons-material/AttachFile';
 import Emoji from '@mui/icons-material/EmojiEmotionsOutlined';
 import Mic from '@mui/icons-material/MicOutlined';
-import Send from '@mui/icons-material/Send';
 import { InputBase } from "@mui/material";
-const Footer = () =>{
+
+
+const Footer = ({sendText, setValue, value, file, setFile, setImage }) =>{
+
+
+    useEffect(() => {
+        const getImage = async () => {
+            if(file){
+                const data = new FormData();
+                data.append("name", file.name);
+                data.append("file", file);
+                let response = await uploadFile(data);
+                setImage(response.data);
+            }
+        }
+        getImage();
+    },[file]);
+
+    
+
+    const onFileChange = (e) => {
+        console.log(e);
+        setFile(e.target.files[0]);
+        setValue(e.target.files[0].name);
+    }
+
+
+    
     return (
         <>
         <div
         className={`${styles.Footer}`}>
-        <div
-        className={`${styles.Wrapper}`}>
             <Emoji
             className={`${styles.Icon}`}
             />
+            <label
+            htmlFor="fileInput">
             <AttachFile
             className={`${styles.Icon}`}
+            id={`${styles.AttachFile}`}
             />
-            <div>
+            </label>
+
+            <input 
+            type="file"
+            id="fileInput"
+            style = {{display:"none"}}            
+            onChange={(e) => onFileChange(e)}
+            />
+
+
+            <div
+                className={`${styles.InputDiv}`}
+            >
               <InputBase 
-              className={`${styles.Input}`}
               fullWidth
-              placeholder="Type a message"
+              placeholder = "Type a message & press enter to send"
+              onChange = {(e) => setValue(e.target.value)} //Message typed in input field is retrieved here
+              onKeyDown = {(e) => sendText(e)}
+              value = {value}
               />  
             </div>
             <Mic
             className={`${styles.Icon} `}
-            />           
-        </div>
+            /> 
         </div>
         </>
     )

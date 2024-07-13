@@ -1,8 +1,24 @@
 import React from "react";
+import { useContext } from "react";
 import styles from "./SingleConversation.module.scss";
+import { AccountContext } from "../../../context/AccountProvider";
+import { setConversation } from "../../../service/api";
+
+
+
+
 const SingleConversation = ({user}) => {
+    const { setPerson, account } = useContext(AccountContext);
+
+    const getUser = async () => {
+        setPerson(user);
+        await setConversation({ senderId: account.sub, receiverId: user.sub })
+    }
+
     return (
-        <div className={`${styles.Container}`}>
+        <div 
+        onClick={() => getUser()}
+        className={`${styles.Container}`}>
             <div>
                 <img
                 src={user.picture}

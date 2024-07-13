@@ -6,7 +6,10 @@ import styles from "./Conversations.module.scss";
 //Compnents import
 import SingleConversation from "./SingleConversation";
 import { Divider } from "@mui/material";
-const Conversations = () => {
+
+
+
+const Conversations = ({text}) => {
     const [users, setUsers] = useState([]);
 
     const {account} = useContext(AccountContext);
@@ -14,10 +17,12 @@ const Conversations = () => {
     useEffect(() => {
         const fetchData = async () => {
             let response = await getUsers();
-            setUsers(response);
+            const filteredData = response.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
+            setUsers(filteredData);
+            
         };
         fetchData();
-    }, []);
+    }, [text]);
     return (
         <>
             <div

@@ -3,7 +3,10 @@ import { Search as SearchIcon } from "@mui/icons-material";
 import { InputBase } from "@mui/material";
 import styles from "./Search.module.scss";
 
-const Search = () => {
+const Search = ({setText}) => {
+
+
+
     return (
         <div className={`${styles.Component}`}>
             <div className={`${styles.Wrapper}`}>
@@ -13,6 +16,7 @@ const Search = () => {
                 <InputBase
                     className={`${styles.InputField}`}
                     placeholder="Search or start a new chat "
+                    onChange={(event) => setText(event.target.value)}
                     fullWidth
                 />
             </div>

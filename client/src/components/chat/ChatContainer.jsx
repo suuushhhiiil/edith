@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { AccountContext } from "../../context/AccountProvider";
+
 
 //Components Import
 import Menu from "./menu/Menu";
@@ -7,6 +10,8 @@ import styles from "./ChatContainer.module.scss"
 import ChatBox from "./chats/ChatBox";
 
 const ChatContainer = () => {
+  const { person } = useContext(AccountContext);
+
   return (
       <div
       className={`${styles.Container}`}
@@ -17,8 +22,7 @@ const ChatContainer = () => {
         </div>
         <div
         className={`${styles.RightBox}`}>
-           {/*<EmptyChat/>*/}
-           <ChatBox/>
+          { Object.keys(person).length ? <ChatBox /> : <EmptyChat />}
         </div>
       </div>
   );

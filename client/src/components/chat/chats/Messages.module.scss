@@ -1,12 +1,15 @@
 @import "../../../constants/variable.module.scss";
 
-
-.Container{
-    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-    background-size: 60%;
+.Container {
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-size: 50%;
 }
 
-.Messages{
-    height: 80vh;
-    overflow-y: scroll;    
+.Wrapper {
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
+}
+
+.MessageSingle {
+    padding: 1px 80px;
 }
