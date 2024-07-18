@@ -1,6 +1,6 @@
 //import React from "react";
 import axios from "axios";
-const url = "http://localhost:8000";
+const url = "http://localhost:8080";
 export const addUser= async (data) => {
     try {
        await axios.post(`${url}/add`, data); //to wait for response
@@ -39,12 +39,7 @@ export const getConversation = async (data) => {
 
 export const newMessage = async (data) => {
     try {
-        await axios.post(`${url}/message/add`, data,
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data"                
-            }
-    });
+        await axios.post(`${url}/message/add`, data);
     } catch (error) {
         console.log("Error while calling newMessage API", error.message);
     }
@@ -62,9 +57,25 @@ export const getMessages = async (id) => {
 
 export const uploadFile = async (data) => {
     try {
-        return await axios.post(`${url}/file/upload`, data);
+        return await axios.post(`${url}/file/upload`, data,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data"                
+            }
+            });
     } catch (error) {
-        console.log("Error while uploading File", error.message);
-        
+        if (error.response) {
+            // The request was made and the server responded with a status code that falls out of the range of 2xx
+            console.log("Error response data:", error.response.data);
+            console.log("Error response status:", error.response.status);
+            console.log("Error response headers:", error.response.headers);
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.log("Error request:", error.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log("Error message:", error.message);
+        }
+        console.log("Error config:", error.config);
     }
-}
+};

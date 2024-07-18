@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Messages.module.scss";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { AccountContext } from "../../../context/AccountProvider";
 import { getMessages, newMessage } from "../../../service/api";
 
@@ -18,6 +18,7 @@ const Messages = ({person, conversation}) => {
     const [newMessageFlag, setNewMessageFlag] = useState(false);
     const [file, setFile] = useState();
     const [image, setImage] = useState('');
+    const scrollRef = useRef();
 
     useEffect(() => {
       const getMessageDetails = async () => {
@@ -28,27 +29,33 @@ const Messages = ({person, conversation}) => {
     }, [person._id, conversation._id, newMessageFlag])
 
 
+    
+    useEffect(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({transition : "smooth"});
+      }
+    }, [messages]);
 
     const sendText = async (event) => {
       const code = event.key || event.which;
       if(code === "Enter" || code=== 13){
         let message =" ";
-        if(!file)
+        if(file)
         {
-          message = {
-          senderId: account.sub,
-          receiverId: person.sub,
-          conversationId: conversation._id,
-          type: 'text',
-          text: value
-        }}
-        else {
           message = {
             senderId: account.sub,
             receiverId: person.sub,
             conversationId: conversation._id,
             type: 'file',
             text: image
+        }}
+        else {  
+            message = {
+              senderId: account.sub,
+              receiverId: person.sub,
+              conversationId: conversation._id,
+              type: 'text',
+              text: value
         }
       }
 
@@ -56,7 +63,7 @@ const Messages = ({person, conversation}) => {
       setValue('');
       setFile('');
       setImage('');
-        setNewMessageFlag(prev => !prev);
+      setNewMessageFlag(prev => !prev);
       }
 }
 
@@ -65,13 +72,16 @@ const Messages = ({person, conversation}) => {
     <>
     <div className={`${styles.Container}`}>
       <div 
-      className={`${styles.Wrapper}`}>
+      className={`${styles.Wrapper}`}
+      >
         {
           messages && messages.map(message => (
             <div
             className={`${styles.MessageSingle}`}
+            //ref={scrollRef} //this is giving an error for the scroll-effect
             >
-            <MessageSingle message={message} />    
+            <MessageSingle message={message} 
+            />    
             </div>  
           ))
         }

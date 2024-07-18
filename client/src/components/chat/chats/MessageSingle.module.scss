@@ -42,3 +42,26 @@
     text-align: right;
     word-break: keep-all;
 }
+
+.imageMessage {
+    position: relative;
+}
+
+#imageTimeline{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 11px;
+    color: $label;
+    margin-top: auto;
+    text-align: right;
+    word-break: keep-all;
+}
+
+
+.fileDownloadIcon {
+    margin-right: 10px;
+    border: 1px solid $label;
+    border-radius: 50%;
+    font-size: small;
+}

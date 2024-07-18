@@ -1,7 +1,16 @@
 import React from "react";
 import styles from "./ChatHeader.module.scss";
 import { Search, MoreVert } from "@mui/icons-material";
+import { useContext } from "react";
+import {AccountContext} from "../../../context/AccountProvider";
+
+
+
+
 const ChatHeader = ({person}) => {
+
+
+    const {activeUsers} = useContext(AccountContext);
     return (
         <>
         <div 
@@ -22,7 +31,7 @@ const ChatHeader = ({person}) => {
             <div
             className={`${styles.Status}`}
             >
-                Offline
+                {activeUsers?.find(user => user.sub === person.sub) ? 'Online' : 'Offline'}
                 </div>
             </div>
             <div className={`${styles.Icons}`}>

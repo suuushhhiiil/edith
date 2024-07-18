@@ -11,18 +11,19 @@ const storage = new GridFsStorage({
     url: `mongodb+srv://${USERNAME}:${PASSWORD}@messanger-edith.gdzitkl.mongodb.net/?retryWrites=true&w=majority&appName=messanger-edith`,
     options: { useUnifiedTopology: true, useNewUrlParser: true},
     file : (request, file) => {
-        const match = ["image/png", "image/jpeg", "image/jpg"];
+        const match = ["image/png", "image/jpg"];
 
         if(match.indexOf(file.mimeType)=== -1){
             return `${Date.now()}-file-${file.originalname}`;
         }
+        else {
         return {
             bucketName: "photos",
             filename: `${Date.now()}-file-${file.originalname}`
         }
-    }
+    }}
 
 });
 
-const upload =  multer({storage});
-export default upload;
+
+export default multer({storage});

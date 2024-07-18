@@ -12,7 +12,7 @@ import { InputBase } from "@mui/material";
 
 const Footer = ({sendText, setValue, value, file, setFile, setImage }) =>{
 
-
+//file Upload
     useEffect(() => {
         const getImage = async () => {
             if(file){
@@ -24,7 +24,7 @@ const Footer = ({sendText, setValue, value, file, setFile, setImage }) =>{
             }
         }
         getImage();
-    },[file]);
+    },[file, setImage]);
 
     
 
