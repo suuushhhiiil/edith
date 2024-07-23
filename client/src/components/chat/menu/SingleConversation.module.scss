@@ -13,7 +13,28 @@
     margin: 15px 15px;
 }
 
+.Component{
+    width: 100%;
+}
+
+.userDetail{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .Name {
-    font-size: 18px;
+    font-size: 17px;
     margin-top: 18px;
+    font-weight: 500;
+}
+
+.timestamp{
+    font-size: 11px;
+    color: $green;
+    margin-right: 20px;
+}
+.newMessage{
+    margin-top: -17px;
+    font-size: 14px;
 }
